@@ -1,4 +1,4 @@
-<% percentage = (project.percentage_of_reaching_goal * 100) %>
+<% percentage = (project.percentage_of_reaching_goal * 100).round(2) %>
 
 <%= link_to project_path(project), style: "text-decoration: none; color: black;" do %>
   <div class="card" style="width: 100%; margin: 32px auto;">
@@ -10,7 +10,14 @@
       <div class="card-text">
         <p><%= project.brief %></p>
         <p style="color: red;" class="seconds_countdown" data-seconds="<%= project.seconds_left %>"></p>
-        <br/>
+        <p><b><%= project.status_to_string %></b></p>
+        <p>已募得:
+          <span style="color: red;">
+            <%= project.paid_pledges_amounts %>
+          </span>
+          <span>/</span>
+          <sub><%= project.goal %></sub>
+        </p>
         <div class="progress">
           <div class="progress-bar" role="progressbar" style="width: <%= "#{percentage}%" %>;" aria-valuenow="<%= percentage %>" aria-valuemin="0" aria-valuemax="100">
             <% unless percentage == 0.0 %>
@@ -19,7 +26,7 @@
           </div>
         </div>
         <br/>
-        <p>已經有 <%= project.pledges.count %> 個人贊助</p>
+        <p>已經有 <%= project.paid_pledges.count %> 個人贊助</p>
       </div>
     </div>
   </div>

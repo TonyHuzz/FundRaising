@@ -13,11 +13,14 @@
               <%= @project.name %>
             </h5>
             <div class="card-text">
-              <h3>贊助目標: NT$ <%= @project.goal %></h3>
+              <p><b>已募得金額</b></p>
+              <h2 style="color: red;">
+                NT$ <%= @project.paid_pledges_amounts %>
+              </h2>
+              <h5>贊助目標: NT$ <%= @project.goal %></h5>
               <br/>
-              <p style="color: red;" class="seconds_countdown" data-seconds="<%= @project.seconds_left %>">
-              </p>
-              <br/>
+              <p style="color: red;" class="seconds_countdown" data-seconds="<%= @project.seconds_left %>"></p>
+              <p><b><%= @project.status_to_string %></b></p>
               <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: <%= "#{@percentage}%" %>;" aria-valuenow="<%= @percentage %>" aria-valuemin="0" aria-valuemax="100">
                   <% unless @percentage == 0.0 %>

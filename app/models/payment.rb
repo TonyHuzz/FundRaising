@@ -11,4 +11,10 @@ class Payment < ApplicationRecord
 
   validates_numericality_of :end_price, greater_than_or_equal_to: 0
 
+
+  def paid!
+    self.paid_date = Time.now
+    super                  #super是指原本的動作
+  end
+
 end

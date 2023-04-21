@@ -1,7 +1,9 @@
 class Pledge < ApplicationRecord
   belongs_to :user
   belongs_to :project_support
+
   has_one :payment
+  has_one :project, through: :project_support
 
   enum status: [:not_selected_yet, :not_paid, :paid, :canceled]
 
@@ -12,6 +14,13 @@ class Pledge < ApplicationRecord
 
   def end_price
     support_price * quantity
+  end
+
+  def paid!
+    self.issue_date = Time.now
+    super           #super是指原本的動作
+
+    project.update_status_if_reaching_goal!
   end
 
   private

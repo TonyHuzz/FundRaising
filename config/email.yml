@@ -1,0 +1,24 @@
+test:
+  address: "smtp.gmail.com"
+  port: 587
+  domain: "gmail"
+  authentication: "plain"
+  user_name: <%=ENV['GMAIL_USERNAME']%>
+  password: <%=ENV['GMAIL_PASSWORD']%>
+  enable_starttls_auto: true
+development:
+  address: "smtp.gmail.com"
+  port: 587
+  domain: "gmail"
+  authentication: "plain"
+  user_name: <%=ENV['GMAIL_USERNAME']%>
+  password: <%=ENV['GMAIL_PASSWORD']%>
+  enable_starttls_auto: true
+production:
+  address: "smtp.gmail.com"
+  port: 587
+  domain: "gmail"
+  authentication: "plain"
+  user_name: <%=ENV['GMAIL_USERNAME']%>
+  password: <%=ENV['GMAIL_PASSWORD']%>
+  enable_starttls_auto: true

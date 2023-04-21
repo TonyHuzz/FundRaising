@@ -88,6 +88,7 @@
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.18.0, ruby-2.7.7-p221) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="msgpack (v1.7.0, ruby-2.7.7-p221) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multi_xml (v0.6.0, ruby-2.7.7-p221) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mysql2 (v0.5.5, ruby-2.7.7-p221) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nested_form (v0.3.2, ruby-2.7.7-p221) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-imap (v0.3.4, ruby-2.7.7-p221) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-pop (v0.1.2, ruby-2.7.7-p221) [gem]" level="application" />
@@ -115,6 +116,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rails-dom-testing (v2.0.3, ruby-2.7.7-p221) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails-html-sanitizer (v1.5.0, ruby-2.7.7-p221) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails_admin (v2.2.1, ruby-2.7.7-p221) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails_admin-i18n (v1.18.0, ruby-2.7.7-p221) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="railties (v5.2.8.1, ruby-2.7.7-p221) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v13.0.6, ruby-2.7.7-p221) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rb-fsevent (v0.11.2, ruby-2.7.7-p221) [gem]" level="application" />

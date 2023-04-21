@@ -147,6 +147,7 @@ GEM
     minitest (5.18.0)
     msgpack (1.7.0)
     multi_xml (0.6.0)
+    mysql2 (0.5.5)
     nested_form (0.3.2)
     net-imap (0.3.4)
       date
@@ -340,6 +341,7 @@ DEPENDENCIES
   dotenv-rails
   duktape
   jbuilder (~> 2.5)
+  mysql2
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
   pg

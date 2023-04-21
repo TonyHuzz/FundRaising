@@ -81,7 +81,7 @@ class PaymentsController < ApplicationController
           end
 
           #設已付款金額
-          payment.end_price = result[:Amt]
+          payment.end_price = result["Amt"]
 
           #儲存，加!會導致失敗的時候出現error
           payment.save!

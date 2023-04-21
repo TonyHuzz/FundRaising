@@ -1,0 +1,71 @@
+<div id="project_show" style="margin: 58px auto;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="<%= @project.ad_url%>"></iframe>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="card" style="width: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= @project.name %>
+            </h5>
+            <div class="card-text">
+              <h3>贊助目標: NT$ <%= @project.goal %></h3>
+              <br/>
+              <p style="color: red;" class="seconds_countdown" data-seconds="<%= @project.seconds_left %>">
+              </p>
+              <br/>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: <%= "#{@percentage}%" %>;" aria-valuenow="<%= @percentage %>" aria-valuemin="0" aria-valuemax="100">
+                  <% unless @percentage == 0.0 %>
+                    <%= "#{@percentage}%" %>
+                  <% end %>
+                </div>
+              </div>
+              <br />
+              <p>已經有 <%= @project.paid_pledges.count %> 個人贊助</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin: 32px auto;">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-8">
+          <%= render 'projects/show_detail_tabs', project: @project %>
+        </div>
+        <div class="col-12 col-md-4">
+          <% @project_supports.each do |project_support| %>
+            <section>
+              <%= form_tag pledges_path, method: :post do %>
+                <h3><%= project_support.name %></h3>
+                <h5>NT$ <%= project_support.price%> / 每單位</h5>
+                <div>
+                  <%= project_support.description %>
+                </div>
+                <input type="hidden" name="id" value="<%= project_support.id %>">
+
+                <div class="form-group">
+                  <label for="quantity">贊助數量</label>
+                  <input type="number" class="form-control" id="quantity" name="quantity" placeholder="1 ~ 10" max="10" min="1" value="1">
+                </div>
+                <div class="clearfix">
+                  <button type="submit" class="btn btn-info float-right">
+                    贊助
+                  </button>
+                </div>
+              <% end %>
+              <hr/>
+            </section>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-4">
+      類別: <%= @category.name %>
+    </h1>
+  </div>
+</div>
+<div class="container">
+  <p>正在募資</p>
+  <% unless @projects.blank? %>
+    <%= render 'projects/card_list', projects: @projects %>
+  <% else %>
+    <div class="col-12">
+      <p>現在沒有進行中的募資！！</p>
+    </div>
+  <% end %>
+  <hr/>
+</div>

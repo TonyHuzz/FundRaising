@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">募資GOGO</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class=" mr-auto">
+    </div>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <ul class="navbar-nav ml-sm-2">
+      <% if @categories %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+            類別
+          </a>
+          <div class="dropdown-menu">
+            <% @categories.each do |category| %>
+              <%= link_to category.name, category_path(category), class: "dropdown-item" %>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+      <li class="nav-item">
+        <% if current_user %>
+          <%= link_to '登出', destroy_user_session_path, method: :delete, class: "nav-link"  %>
+        <% else%>
+          <%= link_to '登入', user_session_path, class: "nav-link"%>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>
+

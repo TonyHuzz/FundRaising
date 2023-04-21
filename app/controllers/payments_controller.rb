@@ -18,7 +18,7 @@ class PaymentsController < ApplicationController
     amt = @pledge.end_price
     itemDesc = @pledge.project_name
 
-    data = "MerchantID=#{merchantID}&RespondType=#{respondType}&TimeStamp=#{timeStamp}&Version=#{version}&MerchantOrderNo=#{merchantOrderNo}&Amt=#{amt}&ItemDesc=#{itemDesc}&TradeLimit=300&Email=#{current_user.email}&CustomerURL=https://xxx/payments/not_paid_yet&ClientBackURL=https://xxx/payments/canceled"
+    data = "MerchantID=#{merchantID}&RespondType=#{respondType}&TimeStamp=#{timeStamp}&Version=#{version}&MerchantOrderNo=#{merchantOrderNo}&Amt=#{amt}&ItemDesc=#{itemDesc}&TradeLimit=300&Email=#{current_user.email}&CustomerURL=https://rails-fundraising-gogo.herokuapp.com/payments/not_paid_yet&ClientBackURL=https://rails-fundraising-gogo.herokuapp.com/payments/canceled"
 
     data = addpadding(data)
     aes = encrypt_data(data, HASH_KEY, HASH_IV, 'AES-256-CBC')

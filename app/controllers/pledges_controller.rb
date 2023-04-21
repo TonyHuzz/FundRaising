@@ -1,6 +1,21 @@
 class PledgesController < ApplicationController
   before_action :is_login?
   before_action :get_project_support, only: [:create]
+  before_action :get_pledge, except: [:create, :index]
+
+
+  def show
+    case @pledge.status_before_type_cast
+    when Pledge.statuses[:paid]
+      render "paid"
+    when Pledge.statuses[:not_paid]
+      render "not_paid"
+    else
+      flash[:alert] = "沒有此贊助"
+      redirect_to root_path
+      return
+    end
+  end
 
   def create
     @pledge = Pledge.create({
@@ -34,4 +49,15 @@ class PledgesController < ApplicationController
       return
     end
   end
+
+  def get_pledge
+    @pledge = Pledge.find_by(id: params[:id], user: current_user)
+
+    unless @pledge
+      flash[:alert] = "沒有此贊助"
+      redirect_to root_path
+      return
+    end
+  end
+
 end

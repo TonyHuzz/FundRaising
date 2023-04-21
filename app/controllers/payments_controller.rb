@@ -51,6 +51,9 @@ class PaymentsController < ApplicationController
         #取出json裡面的Result value, 我們需要的都在裡面
         result = jsonResult["Result"]
 
+        #寫入Log
+        Logger.new("#{Rails.root}/paid.log").try("info", result)
+
         #取出我們平台的訂單編號
         merchantOrderNo = result["MerchantOrderNo"]
 
@@ -85,11 +88,13 @@ class PaymentsController < ApplicationController
 
           #pledge 改成已付款，Model裡面有override
           pledge.paid!
+          redirect_to pledge_path(@pledge)
+          return
         end
       end
     end
 
-    # TODO: to somewhere else
+    flash[:alert] = "付款失敗"
     redirect_to root_path
   end
 
@@ -110,6 +115,9 @@ class PaymentsController < ApplicationController
 
         result = jsonResult["Result"]
 
+        #寫入Log
+        Logger.new("#{Rails.root}/not_paid_yet.log").try("info", result)
+
         merchantOrderNo = result["MerchantOrderNo"]
 
         #利用訂單編號找出 pledge，建立非同步交易的情況pledge 會是處於not_selected_yet
@@ -123,7 +131,10 @@ class PaymentsController < ApplicationController
           payment.transaction_service_provider = "mpg"
           if result["PaymentType"] == "CVS"
             payment.payment_type = "cvs"
-            # TODO: add info from result
+            expire_date = result["ExpireDate"]
+            expire_time = result["ExpireTime"]
+            payment.unpaid_payment_expire_date = Time.zone.parse("#{expire_date} #{expire_time}")
+            payment.code_no = result["CodeNo"]
           elsif result["PaymentType"] == "VACC"
             payment.payment_type = "atm"
             # TODO: add info from result
@@ -136,11 +147,13 @@ class PaymentsController < ApplicationController
 
           # pledge改成未付款
           pledge.not_paid!
+          redirect_to pledge_path(@pledge)
+          return
         end
       end
     end
 
-    # TODO: to somewhere else
+    flash[:alert] = "選擇付款方式失敗"
     redirect_to root_path
   end
 

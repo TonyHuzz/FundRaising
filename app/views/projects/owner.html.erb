@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div style="margin: 32px auto">
+        <h3>募資團隊設定:</h3>
+        <br/>
+        <%= form_for @project_owner, url: owner_projects_path, method: :patch do |f| %>
+          <%= f.label :description, "敘述" %><br/>
+          <%= f.text_area :description, class: "form-control" %><br/>
+
+          <%= f.label :cover_image, "圖片" %><br/>
+          <%= image_tag (@project_owner.cover_image_url || "https://via.placeholder.com/350x200"), size: "300x200", id: "target", original_url: @project_owner.cover_image_url  %><br/>
+
+          <%= f.file_field :cover_image, class: "btn btn-default" %><br/>
+          <br/>
+          <hr/>
+          <%= f.submit "確認修改", class: "btn btn-info" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function (){
+      $("#project_owner_cover_image").change(function (){
+          readURL(this, "target");
+      })
+
+      function readURL(input, image_tag_id){
+          if (input.files && input.files[0]){
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                  $("#" + image_tag_id).attr('src', e.target.result);
+              }
+              reader.readAsDataURL(input.files[0]);
+          }
+          else {
+              var original_url = $("#" + image_tag_id).attr("original_url");
+              $("#" + image_tag_id).attr('src', original_url)
+          }
+      }
+  })
+</script>

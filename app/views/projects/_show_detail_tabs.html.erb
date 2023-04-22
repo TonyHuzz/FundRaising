@@ -20,6 +20,8 @@
   </div>
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
     <section style="margin: 32px auto;">
+      <%= image_tag (@project.project_owner.cover_image_url || "https://via.placeholder.com/350x200"), size: "300x200", id: "target", original_url: @project.project_owner.cover_image_url  %><br/>
+      <br/><br/>
       <%= @project.project_owner.description %>
     </section>
   </div>

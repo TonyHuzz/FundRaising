@@ -4,6 +4,10 @@ class PledgesController < ApplicationController
   before_action :get_pledge, except: [:create, :index]
 
 
+  def index
+    @pledges = current_user.validated_pledges
+  end
+
   def show
     case @pledge.status_before_type_cast
     when Pledge.statuses[:paid]

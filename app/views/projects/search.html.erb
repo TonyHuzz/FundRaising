@@ -1,0 +1,14 @@
+<div id="projects_search" style="margin: 56px 0;">
+  <div class="container">
+    <h3>搜尋: <%= @key_words %></h3>
+  </div>
+  <div class="container">
+    <% unless @projects.blank? %>
+      <%= render 'projects/card_list', projects: @projects %>
+    <% else %>
+      <div class="col-12">
+        <p>沒有搜尋到結果</p>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,147 @@
+<div class="container">
+  <div class='row'>
+    <div class='col-12'>
+      <div style="padding: 32px 0;">
+        <h3>修改專案</h3>
+        <br/>
+        <%= form_for @project do |f| %>
+          <%= f.label "上架狀態"%><br/>
+          <%= f.select :status, Project.statuses.keys.map { |s| [s.humanize, s] }, {include_blank: true}, {class: "form-control"} %>
+          <br/>
+          <%= f.label :name, "專案名稱" %><br/>
+          <%= f.text_field :name, class: "form-control" %>
+          <br/>
+          <%= f.label :category_id, "類別" %><br/>
+          <%= f.select :category_id, @categories.collect { |p| [ p.name, p.id ] }, {include_blank: true}, {class: "form-control"} %>
+          <br/>
+          <%= f.label :brief, "簡介" %><br/>
+          <%= f.text_field :brief, class: "form-control" %>
+          <br/>
+          <%= f.label :description, "完整敘述" %><br/>
+          <%= f.text_area :description, class: "form-control", size: "30x10" %>
+          <br/>
+          <%= f.label :goal, "目標金額" %><br/>
+          <%= f.number_field :goal, min: 0, class: "form-control" %>
+          <br/>
+          <%= f.label :due_date, "截止日期" %><br/>
+          <%= f.date_field :due_date, class: "form-control" %>
+          <br/>
+          <%= f.label :ad_url, "廣告影片網址" %><br/>
+          <%= f.text_field :ad_url, class: "form-control" %>
+          <br/>
+          <%= f.label :cover_image, "圖片" %><br/>
+          <%= image_tag (@project.cover_image_url || "https://via.placeholder.com/350x200"), size: "300x200", id: "target", original_url: @project.cover_image_url %>
+          <br/>
+          <%= f.file_field :cover_image, class: "btn btn-default" %>
+          <br />
+          <hr/>
+          <%= f.submit "確定修改", class: "btn btn-warning" %>
+          <%= link_to "取消", owner_projects_path(), class: "btn btn-default"%>
+        <% end %>
+      </div>
+    </div>
+    <div class='col-12'>
+      <div style="margin: 32px auto;">
+
+        <div class="clearfix">
+          <h3 class="float-left">所有贊助方案：</h3>
+          <%= form_for @new_project_support do |f| %>
+           <%= f.submit "新增", class: "btn btn-info float-right" %>
+          <% end %>
+        </div>
+        <br/>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">名稱</th>
+            <th scope="col">價錢</th>
+            <th scope="col">敘述</th>
+            <th scope="col">狀態</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @project_supports.each_with_index do |support, index|%>
+            <tr>
+              <th scope="row"><%= index + 1%></th>
+              <td><%= support.name %></td>
+              <td><%= support.price %></td>
+              <td><%= support.description %></td>
+              <td><%= support.status_to_string %></td>
+              <td><a class="project_support_edit_button" href="javascript:void(0);" data-toggle="modal" data-target="#edit_project_support" data-detail="<%= support.to_json %>">編輯</a></td>
+              <td><td><%= link_to "刪除", project_support_path(project_support_id: support.id), method: :delete, data: { confirm: "你確定要刪除嗎？" } %></td></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="edit_project_support" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="padding: 48px 16px;">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <%= form_for @first_project_support, url: project_support_path(project_support_id: @first_project_support.id), html: {id: "project_support_edit_form"} do |f| %>
+              <%= f.label :name, "贊助名稱" %><br/>
+              <%= f.text_field :name, class: "form-control" %>
+              <br/>
+              <%= f.label :description, "完整敘述" %><br/>
+              <%= f.text_area :description, class: "form-control", size: "30x10" %>
+              <br/>
+              <%= f.label :price, "贊助金額" %><br/>
+              <%= f.number_field :price, min: 0, class: "form-control" %>
+              <br/>
+              <%= f.label "上架狀態"%><br/>
+              <%= f.select :status, ProjectSupport.statuses.keys.map { |s| [s.humanize, s] }, {include_blank: true}, {class: "form-control"} %>
+              <br/>
+              <%= f.submit "修改", class: "btn btn-info" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+    $(function(){
+        $("#project_cover_image").change(function(){
+            readURL(this, "target");
+        });
+
+        function readURL(input, image_tag_id){
+            if(input.files && input.files[0]){
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("#" + image_tag_id).attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }else{
+                var original_url = $("#" + image_tag_id).attr("original_url");
+                $("#" + image_tag_id).attr('src', original_url);
+            }
+        }
+
+        $(".project_support_edit_button").click(function (){
+            var detail = $(this).data("detail");
+
+            var newURL = "/projects/" + <%= @project.id %> + "/project_supports/" + detail.id
+            $("#project_support_edit_form").attr("action", newURL);
+            $("#project_support_name").val(detail.name);
+            $("#project_support_description").val(detail.description);
+            $("#project_support_price").val(detail.price);
+            $("#project_support_status").val(detail.status);
+        })
+
+
+    });
+</script>

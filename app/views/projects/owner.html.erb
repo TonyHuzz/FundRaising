@@ -1,21 +1,68 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <div style="margin: 32px auto">
-        <h3>募資團隊設定:</h3>
-        <br/>
-        <%= form_for @project_owner, url: owner_projects_path, method: :patch do |f| %>
-          <%= f.label :description, "敘述" %><br/>
-          <%= f.text_area :description, class: "form-control" %><br/>
+      <nav style="margin-top: 48px;">
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#project-list" role="tab" aria-controls="nav-home" aria-selected="true">所有專案</a>
+          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="nav-profile" aria-selected="false">團隊設定</a>
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="project-list" role="tabpanel" aria-labelledby="nav-home-tab" style="min-height: 800px;">
+          <div style="margin: 32px auto;">
+            <h3>所有募資專案:</h3>
+            <div class="clearfix">
+              <%= link_to "新增", new_project_path, class: "btn btn-info float-right" %>
+            </div>
+            <br/>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">名稱</th>
+                  <th scope="col">敘述</th>
+                  <th scope="col">結束日期</th>
+                  <th scope="col">狀態</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+              <% @projects.each_with_index do |project, index| %>
+                <tr>
+                  <th scope="row"><%= index + 1 %></th>
+                  <td><%= project.name %></td>
+                  <td><%= project.brief %></td>
+                  <td><%= project.due_date %></td>
+                  <td><%= project.status_to_string %></td>
+                  <td><%= link_to "修改", edit_project_path(project) %></td>
+                  <td><%= link_to "刪除", project_path(project), method: :delete, data: { confirm: "你確定要刪除嗎？" } %></td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="nav-profile-tab" style="min-height: 800px;">
+          <!-- 募資團隊設定 start-->
+          <div style="margin: 32px auto;">
+            <h3>募資團隊設定:</h3>
+            <br/>
+            <%= form_for @project_owner, url: owner_projects_path, method: :patch do |f| %>
+              <%= f.label :description, "敘述" %><br/>
+              <%= f.text_area :description, class: "form-control" %><br/>
 
-          <%= f.label :cover_image, "圖片" %><br/>
-          <%= image_tag (@project_owner.cover_image_url || "https://via.placeholder.com/350x200"), size: "300x200", id: "target", original_url: @project_owner.cover_image_url  %><br/>
-
-          <%= f.file_field :cover_image, class: "btn btn-default" %><br/>
-          <br/>
-          <hr/>
-          <%= f.submit "確認修改", class: "btn btn-info" %>
-        <% end %>
+              <%= f.label :cover_image, "圖片" %><br/>
+              <%= image_tag (@project_owner.cover_image_url || "https://via.placeholder.com/350x200"), size: "300x200", id: "target", original_url: @project_owner.cover_image_url  %>
+              <br/>
+              <%= f.file_field :cover_image, class: "btn btn-default" %>
+              <br/>
+              <br/>
+              <hr/>
+              <%= f.submit "確認修改", class: "btn btn-info" %>
+            <% end %>
+          </div>
+          <!-- 募資團隊設定 end-->
+        </div>
       </div>
     </div>
   </div>

@@ -1,0 +1,10 @@
+zh-TW:
+  category: 類別
+  name: 專案名稱
+  brief: 簡介
+  description: 敘述
+  ad_url: 廣告影片網址
+  cover_image: 封面圖片
+  goal: 目標金額
+  due_date: 截止日期
+  price: 價錢

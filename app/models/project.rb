@@ -1,6 +1,8 @@
 class Project < ApplicationRecord
   belongs_to :project_owner
   belongs_to :category
+
+  has_one :user, through: :project_owner             #搜尋功能可以直接搜尋該專案的project_owner的名稱
   has_many :project_supports
   has_many :pledges, through: :project_supports
   has_many :paid_pledges, through: :project_supports

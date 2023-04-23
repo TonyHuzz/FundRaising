@@ -16,10 +16,16 @@ Rails.application.routes.draw do
   resources :categories, only: [:show] do
   end
 
-  resources :projects, only: [:show] do
+  resources :projects, except: [:index] do
     collection do
       get :owner
+      get :search
       patch :owner, action: :owner_update
+    end
+    member do
+      resources :project_supports, param: :project_support_id, except: [:index, :show, :edit, :new] do
+
+      end
     end
   end
 

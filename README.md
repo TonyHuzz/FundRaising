@@ -29,8 +29,11 @@
 
 ##  開發資訊
 Ruby on Rails 5
+<br/>
 Ruby  2.7.7
+<br/>
 藍星金流串接
+<br/>
 Google Oauth串接
 
 

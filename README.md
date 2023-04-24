@@ -39,8 +39,7 @@ Google Oauth串接
 
 ##  畫面展示
 
-● 首頁 
-<br/>
+<h4>● 首頁<h4/> 
 <img src="https://i.imgur.com/y20Qvqn.png">
 
 ● 註冊

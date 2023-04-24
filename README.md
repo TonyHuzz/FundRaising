@@ -42,26 +42,26 @@ Google Oauth串接
 <h4>● 首頁<h4/> 
 <img src="https://i.imgur.com/y20Qvqn.png">
 
-● 註冊
+<h4>● 註冊<h4/>
 <img src="https://i.imgur.com/SXgBETk.png">
 
-● 登入
+<h4>● 登入<h4/>
 <img src="https://i.imgur.com/r4Z6gPl.png">
 
-● 使用Google登入
+<h4>● 使用Google登入<h4/>
 <img src="https://i.imgur.com/1VX4ZrJ.png">
 
-● 募資專案個別頁面
+<h4>● 募資專案個別頁面<h4/>
 <img src="https://i.imgur.com/6beo71V.png">
 
-● 選定贊助方案導至金流頁面結帳付款
+<h4>● 選定贊助方案導至金流頁面結帳付款<h4/>
 <img src="https://i.imgur.com/2ouyOma.png">
 
-● 使用信用卡結帳後跳轉頁面
+<h4>● 使用信用卡結帳後跳轉頁面<h4/>
 <img src="https://i.imgur.com/FynNJYi.png">
 
-● 付款完成頁面
+<h4>● 付款完成頁面<h4/>
 <img src="https://i.imgur.com/pE412uK.png">
 
-● 該會員贊助歷史紀錄
+<h4>● 該會員贊助歷史紀錄<h4/>
 <img src="">

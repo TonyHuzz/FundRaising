@@ -1,6 +1,6 @@
 
 # FundRaisingGOGO 募資網站練習
-這是一個基於Ruby on Rails所開發的線上募資網站，此網站主要用來熟悉Rails框架的使用，以及如何與Web API、第三方金流串接。
+這是一個基於Ruby on Rails所開發的線上募資網站，此網站主要用來熟悉Rails框架的使用，以及如何與Web API、第三方金流串接。<
 使用金流串接時應需要有實際上線的網址，所以使用Heroku作為上線平台。
 
 ## 使用到的Gem

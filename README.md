@@ -69,12 +69,15 @@ Google Oauth串接
 <h4>● 該會員所建立的募資專案<h4/>
 <img src="https://i.imgur.com/w1cvok9.png">
   
-<h4>● 該會員贊助歷史紀錄<h4/>
-<img src="https://i.imgur.com/qQ4Vrpp.png">
+<h4>● 募資專案擁有者可修改專案內容<h4/>
+<img src="https://i.imgur.com/u5TFeW7.png">
     
-<h4>● 該會員贊助歷史紀錄<h4/>
-<img src="https://i.imgur.com/qQ4Vrpp.png">
+<h4>● 贊助方案必須在修改募資專案裡進行新增或修改<h4/>
+<img src="https://i.imgur.com/ZMtmT8g.png">
       
-<h4>● 該會員贊助歷史紀錄<h4/>
-<img src="https://i.imgur.com/qQ4Vrpp.png">
+<h4>● 利用彈跳視窗方式在同一頁進行修改贊助方案<h4/>
+<img src="https://i.imgur.com/iP5ZihK.png">
+
+<h4>● 後台使用rails admin<h4/>
+<img src="https://i.imgur.com/qv1Z2xs.png">
   

@@ -34,7 +34,7 @@ Ruby  2.7.7
 <br/>
 藍星金流串接
 <br/>
-Google Oauth串接
+Google Login Oauth串接
 
 
 ##  畫面展示

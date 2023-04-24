@@ -6,7 +6,7 @@
 
 ◆ devise                    > 用於快速開發會員系統
 <br/>
-◆ devise-i18n               > 建立多國語系   
+◆ devise-i18n               > 建立多國語系
 <br/>
 ◆ omniauth-google-oauth2    > 用於串接Google Login
 <br/>

@@ -64,4 +64,17 @@ Google Oauth串接
 <img src="https://i.imgur.com/pE412uK.png">
 
 <h4>● 該會員贊助歷史紀錄<h4/>
-<img src="">
+<img src="https://i.imgur.com/qQ4Vrpp.png">
+
+<h4>● 該會員所建立的募資專案<h4/>
+<img src="https://i.imgur.com/w1cvok9.png">
+  
+<h4>● 該會員贊助歷史紀錄<h4/>
+<img src="https://i.imgur.com/qQ4Vrpp.png">
+    
+<h4>● 該會員贊助歷史紀錄<h4/>
+<img src="https://i.imgur.com/qQ4Vrpp.png">
+      
+<h4>● 該會員贊助歷史紀錄<h4/>
+<img src="https://i.imgur.com/qQ4Vrpp.png">
+  

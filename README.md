@@ -32,7 +32,7 @@ Ruby on Rails 5
 <br/>
 Ruby  2.7.7
 <br/>
-藍星金流串接
+藍新金流串接
 <br/>
 Google Login Oauth串接
 
